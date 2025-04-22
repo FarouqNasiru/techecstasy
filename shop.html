@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - ABC Online Store</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/compressorjs/1.2.1/compressor.min.js"></script>
+    <script type="module" src="script.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+
+<body>
+
+    <header>
+        <!-- header inner -->
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="index.html"><img src="images/logo5.png" alt="#" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav mr-auto">
+                                    <div id="auth-section">
+                                        <img id="profile-picture" src="" alt="Profile Picture" class="hidden">
+
+
+                                    </div>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="index.html">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="about.html">About</a>
+                                    </li>
+                                   
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="shop.html">Shop</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact.html">Contact Us</a>
+                                    </li>
+                                    <li class="nav-item d_none login_btn">
+                                        <a class="nav-link" href="#">Login</a>
+                                    </li>
+                                    <li class="nav-item d_none">
+                                        <a class="nav-link" href="#">Register</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for anything...">
+    </div>
+
+
+
+    <div class="container">
+       
+
+        <div class="sections">
+            <button class="section-button">Sections</button>
+            <!-- Remove onclick from the HTML -->
+            <span class="filter" id="filterButton">Filter</span>
+        </div>
+
+
+
+
+        <!-- Slide-out filter menu -->
+        <div class="filter-menu" id="filterMenu">
+            <span class="close-btn" id="closeFilterMenu" onclick="toggleFilterMenu()">&times;</span>
+            <h3>Filter by Category</h3>
+            <label>
+                <input type="checkbox" value="BRAND NEW PHONES"> BRAND NEW PHONES
+            </label>
+            <label>
+                <input type="checkbox" value="UK USED PHONES"> UK USED PHONES
+            </label>
+            <label>
+                <input type="checkbox" value="BRAND NEW LAPTOPS"> BRAND NEW LAPTOPS
+            </label>
+            <label>
+                <input type="checkbox" value="UK USED LAPTOPS"> UK USED LAPTOPS
+            </label>
+            <label>
+                <input type="checkbox" value="AIRPODS"> AIRPODS
+            </label>
+            <label>
+                <input type="checkbox" value="KIDS TABLET"> KIDS TABLET
+            </label>
+            <label>
+                <input type="checkbox" value="iPADS"> iPADS
+            </label>
+            <label>
+                <input type="checkbox" value="SPECIAL OFFER GADGETS"> SPECIAL OFFER GADGETS
+            </label>
+            <label>
+                <input type="checkbox" value="LAPTOP ACCESSORIES"> LAPTOP ACCESSORIES
+            </label>
+            <label>
+                <input type="checkbox" value="SPEAKERS"> SPEAKERS
+            </label>
+            <label>
+                <input type="checkbox" value="GAMES"> GAMES
+            </label>
+            <label>
+                <input type="checkbox" value="LAPTOP REPAIR ACCESSORIES"> LAPTOP REPAIR ACCESSORIES
+            </label>
+            <label>
+                <input type="checkbox" value="iWATCH"> iWATCH
+            </label>
+            <label>
+                <input type="checkbox" value="INTERNET DEVICES"> INTERNET DEVICES
+            </label>
+            <label>
+                <input type="checkbox" value="PHONE ACCESSORIES"> PHONE ACCESSORIES
+            </label>
+            <label>
+                <input type="checkbox" value="MONITORS"> MONITORS
+            </label>
+            <label>
+                <input type="checkbox" value="PRINTERS"> PRINTERS
+            </label>
+            <label>
+                <input type="checkbox" value="POINT OF SALES (POS)"> POINT OF SALES (POS)
+            </label>
+            <label>
+                <input type="checkbox" value="TECH ACCESSORIES"> TECH ACCESSORIES
+            </label>
+            <button id="applyFilters">Apply Filters</button>
+        </div>
+
+
+
+        <div class="categories">
+            <div class="category" style="background-image: url('images/brand-new-phones.jpg');">
+                <span>BRAND NEW PHONES</span>
+            </div>
+            <div class="category" style="background-image: url('images/uk-used-phones.jpg');">
+                <span>UK USED PHONES</span>
+            </div>
+            <div class="category" style="background-image: url('images/brand-new-laptop.jpg');">
+                <span>BRAND NEW LAPTOPS</span>
+            </div>
+            <div class="category" style="background-image: url('images/uk-used-laptop.jpg');">
+                <span>UK USED LAPTOPS</span>
+            </div>
+            <div class="category" style="background-image: url('images/airpods.jpg');">
+                <span>⁠AIRPODS</span>
+            </div>
+            <div class="category" style="background-image: url('images/kids-tablet.jpg');">
+                <span>KIDS TABLET</span>
+            </div>
+            <div class="category" style="background-image: url('images/ipad.jpg');">
+                <span>iPADS</span>
+            </div>
+            <div class="category" style="background-image: url('images/pxfuel.jpg');">
+                <span>SPECIAL OFFER GADGETS</span>
+            </div>
+            <div class="category" style="background-image: url('images/tech-accessories.webp');">
+                <span>⁠LAPTOP ACCESSORIES</span>
+            </div>
+            <div class="category" style="background-image: url('images/jbl.jpg');">
+                <span>SPEAKERS</span>
+            </div>
+            <div class="category" style="background-image: url('images/ps5.jpg');">
+                <span>GAMES</span>
+            </div>
+            <div class="category" style="background-image: url('images/tech-accessories.webp');">
+                <span>LAPTOP REPAIR ACCESSORIES</span>
+            </div>
+            <div class="category" style="background-image: url('images/smartwatch.jpg');">
+                <span>iWATCH</span>
+            </div>
+            <div class="category" style="background-image: url('images/Apple-iPhone-12-Transparent-Images-PNG.png');">
+                <span>⁠INTERNET DEVICES</span>
+            </div>
+            <div class="category" style="background-image: url('images/pexels.jpg');">
+                <span>PHONE ACCESSORIES</span>
+            </div>
+            <div class="category" style="background-image: url('images/pxfuel.jpg');">
+                <span>MONITORS</span>
+            </div>
+            <div class="category" style="background-image: url('images/tech-accessories.webp');">
+                <span>PRINTERS</span>
+            </div>
+            <div class="category" style="background-image: url('images/pxfuel.jpg');">
+                <span>POINT OF SALES (POS)
+                </span>
+            </div>
+            <div class="category" style="background-image: url('images/Apple-iPhone-12-Transparent-Images-PNG.png');">
+                <span>TECH ACCESSORIES</span>
+            </div>
+
+        </div>
+
+        <div class="products-header">
+            <button class="section-button">Our Products</button>
+            <span class="see-all" id="seeAllButton">See all</span>
+        </div>
+
+
+        <section id="products-grid">
+            <!-- Products will be dynamically inserted here -->
+        </section>
+
+
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item"><a class="hell0" href="shop.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">🛍️</span>
+                <span>Shop</span></a>
+        </div>
+        <div class="nav-item"><a class="hell0" href="cart.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">🛒</span>
+                <span>Cart</span></a>
+        </div>
+        <div class="nav-item"><a class="hell0" href="payments.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">📜</span>
+                <span>History</span></a>
+        </div>
+        <div class="nav-item"><a class="hell0" href="wishlist.html" id="wishlist-icon">
+                <span class="nav-icon" style="font-size: 13px; display: block;">❤️</span>
+                <span>Wishlist</span></a>
+        </div>
+        <div class="nav-item"><a class="hell0" href="account.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">👤</span>
+                <span>Account</span></a>
+        </div>
+    </div>
+
+
+
+    <div class="overlay" id="overlay"></div>
+
+
+
+<script>
+// Filter Menu Functionality
+const filterButton = document.getElementById("filterButton");
+const filterMenu = document.getElementById("filterMenu");
+const closeFilterMenu = document.getElementById("closeFilterMenu");
+const overlay = document.getElementById("overlay");
+const applyFiltersButton = document.getElementById("applyFilters");
+
+// Toggle filter menu
+function toggleFilterMenu() {
+  filterMenu.classList.toggle("show");
+  overlay.classList.toggle("show");
+  document.body.style.overflow = filterMenu.classList.contains("show") ? "hidden" : "auto";
+}
+
+// Event listeners for opening and closing the filter menu
+filterButton.addEventListener("click", toggleFilterMenu);
+closeFilterMenu.addEventListener("click", toggleFilterMenu);
+overlay.addEventListener("click", toggleFilterMenu);
+
+// Apply filters
+// Apply filters
+applyFiltersButton.addEventListener("click", function () {
+  // Get all checked checkboxes
+  const checkedCategories = Array.from(
+    document.querySelectorAll('.filter-menu input[type="checkbox"]:checked')
+  ).map((checkbox) => checkbox.value.trim().toUpperCase()); // Normalize to uppercase
+
+  // If no filters are selected, show all products
+  if (checkedCategories.length === 0) {
+    displayProducts(window.allProducts); // Use global allProducts
+    toggleFilterMenu();
+    return;
+  }
+
+  // Filter products by selected categories
+  const filteredProducts = window.allProducts.filter((product) =>
+    product.category && checkedCategories.includes(product.category.trim().toUpperCase())
+  );
+
+  // Display the filtered products
+  displayProducts(filteredProducts);
+
+  // Close the filter menu
+  toggleFilterMenu();
+});
+
+// Function to display products
+function displayProducts(products) {
+  const productsGrid = document.getElementById("products-grid");
+  productsGrid.innerHTML = ""; // Clear existing content
+
+  if (products.length === 0) {
+    productsGrid.innerHTML = '<div class="no-products">No products match your filters.</div>';
+    return;
+  }
+
+  products.forEach((product) => {
+    const productCard = `
+      <div class="product-card" data-category="${product.category}">
+        <img src="${product.mainImage}" alt="${product.name}" data-product-id="${product.id}">
+        <h3>${product.name}</h3>
+        <div class="price-wishlist">
+          <p>$${product.price}</p>
+          <i class="fas fa-heart wishlist-icon" data-product-id="${product.id}"></i>
+        </div>
+      </div>
+    `;
+    productsGrid.innerHTML += productCard;
+  });
+
+  // Add event listeners to wishlist icons
+  setupWishlistListeners();
+
+  // Add event listeners to product images
+  setupProductClickListeners();
+}
+
+// Event listener for "See All" button
+const seeAllButton = document.getElementById("seeAllButton");
+seeAllButton.addEventListener("click", () => {
+  // Reload the page to show all products
+  window.location.reload();
+});
+    
+    </script>
+    <!--  footer -->
+
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script type="module" src="script.js"></script>
+
+    
+</body>
+
+</html>

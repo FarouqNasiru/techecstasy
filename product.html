@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Swiper JS for Image Slider -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/compressorjs/1.2.1/compressor.min.js"></script>
+  <!-- Firebase SDK -->
+  <script type="module" src="product.js"></script>
+</head>
+<body>
+    <div class="product-page">
+        <a href="shop.html" class="back-button">⬅</a>
+    
+       
+    
+        <section id="product-details">
+            <!-- Product details will be dynamically inserted here -->
+          </section>
+    
+
+    <div class="bottom-nav">
+        <div class="nav-item"><a href="shop.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">🛍️</span>
+                <span>Shop</span></a>
+        </div>
+        <div class="nav-item"><a href="cart.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">🛒</span>
+                <span>Cart</span></a>
+        </div>
+        <div class="nav-item"><a href="payments.html">
+            <span class="nav-icon" style="font-size: 13px; display: block;">📜</span>
+            <span>History</span></a>
+        </div>
+        <div class="nav-item"><a href="wishlist.html">
+            <span class="nav-icon" style="font-size: 13px; display: block;">❤️</span>
+            <span>Wishlist</span></a>
+        </div>
+        <div class="nav-item"><a href="account.html">
+            <span class="nav-icon" style="font-size: 13px; display: block;">👤</span>
+            <span>Account</span></a>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

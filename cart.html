@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <!-- Firebase SDK -->
+    <script type="module" src="cart.js"></script>
+    <script src="https://js.paystack.co/v2/inline.js"></script>
+</head>
+
+<body>
+    <div class="wishlist-container">
+        <h2>My TechEcstasy Cart</h2>
+    </div>
+    <section id="cart-items">
+        <!-- Cart items will be dynamically inserted here -->
+    </section>
+
+
+
+
+    
+    
+<!-- Add this modal for billing info (at bottom of body) -->
+<div id="billingModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Billing Information</h2>
+      <form id="billingForm">
+        <input type="text" id="fullName" placeholder="Full Name" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <textarea id="address" placeholder="Full Delivery Address" required></textarea>
+        <input type="text" id="city" placeholder="City" required>
+        <input type="text" id="state" placeholder="State" required>
+        <button type="submit">Save & Continue to Payment</button>
+      </form>
+    </div>
+  </div>
+  
+  <style>
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+  }
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+  }
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  </style>
+
+
+
+    <div class="bottom-nav">
+        <div class="nav-item"><a href="shop.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">🛍️</span>
+                <span>Shop</span></a>
+        </div>
+        <div class="nav-item"><a href="cart.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">🛒</span>
+                <span>Cart</span></a>
+        </div>
+        <div class="nav-item"><a href="payments.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">📜</span>
+                <span>History</span></a>
+        </div>
+        <div class="nav-item"><a href="wishlist.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">❤️</span>
+                <span>Wishlist</span></a>
+        </div>
+        <div class="nav-item"><a href="account.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">👤</span>
+                <span>Account</span></a>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Load Paystack Inline JS -->
+<script src="https://js.paystack.co/v2/inline.js"></script>
+
+
+
+</body>
+
+</html>
+

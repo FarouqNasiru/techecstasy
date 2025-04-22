@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History - TechEcstasy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Previous styles remain the same */
+        
+        /* Add this new style for expanded order details */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .history-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+        
+        .history-header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+        
+        .back-btn {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 20px;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .order-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .order-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .order-date {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .order-item {
+            display: flex;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f5f5f5;
+            align-items: center;
+        }
+        
+        .order-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .order-item-details {
+            flex: 1;
+        }
+        
+        .order-item-details h4 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+        }
+        
+        .order-item-details p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #f5f5f5;
+        }
+        
+        .order-total {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-processing {
+            background-color: #FFF3CD;
+            color: #856404;
+        }
+        
+        .status-completed {
+            background-color: #D4EDDA;
+            color: #155724;
+        }
+        
+        .status-cancelled {
+            background-color: #F8D7DA;
+            color: #721C24;
+        }
+        
+        .empty-history {
+            text-align: center;
+            padding: 50px 0;
+            color: #666;
+        }
+        
+        .empty-history i {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .empty-history a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+        
+        .loading i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            text-align: center;
+            padding: 30px;
+            color: #721C24;
+            background-color: #F8D7DA;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .order-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .order-actions button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .reorder-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .track-btn {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .view-details-btn {
+            background-color: transparent;
+            border: 1px solid #007bff;
+            color: #007bff;
+        }
+        
+        .order-details {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .order-details.show {
+            display: block;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .detail-value {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="history-container">
+        <div class="history-header">
+            <a href="account.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+            <h1>Order History</h1>
+        </div>
+        
+        <div id="history-items">
+            <div class="loading">
+                <i class="fas fa-spinner"></i>
+                <p>Loading your order history...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item"><a href="shop.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">🛍️</span>
+                <span>Shop</span></a>
+        </div>
+        <div class="nav-item"><a href="cart.html">
+                <span class="nav-icon" style="font-size: 13px; display: block;">🛒</span>
+                <span>Cart</span></a>
+        </div>
+        <div class="nav-item"><a href="payments.html">
+            <span class="nav-icon" style="font-size: 13px; display: block;">📜</span>
+            <span>History</span></a>
+        </div>
+        <div class="nav-item"><a href="wishlist.html">
+            <span class="nav-icon" style="font-size: 13px; display: block;">❤️</span>
+            <span>Wishlist</span></a>
+        </div>
+        <div class="nav-item"><a href="account.html">
+            <span class="nav-icon" style="font-size: 13px; display: block;">👤</span>
+            <span>Account</span></a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+        import { 
+            getFirestore, 
+            doc, 
+            getDoc,
+            collection,
+            query,
+            where,
+            getDocs,
+            orderBy,
+            writeBatch,
+            increment
+        } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCcwOu27SDWqxPpM9z3WNdVTLKt6OyIPVQ",
+            authDomain: "tecstasy-b983f.firebaseapp.com",
+            projectId: "tecstasy-b983f",
+            storageBucket: "tecstasy-b983f.firebasestorage.app",
+            messagingSenderId: "476018649191",
+            appId: "1:476018649191:web:658266178580b03f6accc2",
+            measurementId: "G-EL41HV8PSE"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Format currency
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', { 
+                style: 'currency', 
+                currency: 'USD' 
+            }).format(amount);
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const options = { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Get status class
+        function getStatusClass(status) {
+            status = (status || '').toLowerCase();
+            return status === 'completed' ? 'status-completed' :
+                   status === 'cancelled' ? 'status-cancelled' :
+                   'status-processing';
+        }
+
+        // Display order history
+        async function displayOrderHistory(userId) {
+            try {
+                const historyContainer = document.getElementById("history-items");
+                
+                // 1. First try to get from orders collection
+                let orders = [];
+                const ordersQuery = query(
+                    collection(db, "orders"),
+                    where("userId", "==", userId),
+                    orderBy("createdAt", "desc")
+                );
+                
+                const ordersSnapshot = await getDocs(ordersQuery);
+                if (!ordersSnapshot.empty) {
+                    orders = ordersSnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        ...doc.data(),
+                        date: doc.data().createdAt?.toDate?.()?.toISOString?.() || new Date().toISOString()
+                    }));
+                } 
+                
+                // 2. Fallback to user's purchaseHistory if no orders found
+                if (orders.length === 0) {
+                    const userRef = doc(db, "users", userId);
+                    const userDoc = await getDoc(userRef);
+                    
+                    if (userDoc.exists() && userDoc.data().purchaseHistory) {
+                        orders = userDoc.data().purchaseHistory;
+                        // Sort by date (newest first)
+                        orders.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    }
+                }
+
+                if (orders.length === 0) {
+                    historyContainer.innerHTML = `
+                        <div class="empty-history">
+                            <i class="fas fa-history"></i>
+                            <p>No orders yet</p>
+                            <a href="shop.html">Start Shopping</a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // 3. Display orders
+                let html = '';
+                orders.forEach(order => {
+                    const orderDate = formatDate(order.date);
+                    const statusClass = getStatusClass(order.status);
+                    
+                    const itemsHtml = order.items.map(item => `
+                        <div class="order-item">
+                            <img src="${item.image || item.mainImage || 'images/placeholder-product.png'}" 
+                                 alt="${item.name}" 
+                                 class="order-item-image"
+                                 onerror="this.src='images/placeholder-product.png'">
+                            <div class="order-item-details">
+                                <h4>${item.name}</h4>
+                                <p>${formatCurrency(item.price)} × ${item.quantity}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    // Build order details HTML
+                    const orderDetailsHtml = `
+                        <div class="order-details" id="details-${order.id || order.orderId}">
+                            <div class="detail-row">
+                                <span class="detail-label">Order ID:</span>
+                                <span class="detail-value">${order.id || order.orderId}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Date:</span>
+                                <span class="detail-value">${orderDate}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value ${statusClass}">${order.status || 'Completed'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Payment Method:</span>
+                                <span class="detail-value">${order.paymentMethod || 'Not specified'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Shipping Address:</span>
+                                <span class="detail-value">${order.shippingAddress || 'Not specified'}</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    html += `
+                        <div class="order-card">
+                            <div class="order-header">
+                                <h3>Order #${order.id || order.orderId.substring(0, 8)}</h3>
+                                <p class="order-date">${orderDate}</p>
+                            </div>
+                            ${itemsHtml}
+                            <div class="order-footer">
+                                <span class="status ${statusClass}">${order.status || 'Completed'}</span>
+                                <p class="order-total">Total: ${formatCurrency(order.total)}</p>
+                            </div>
+                            ${orderDetailsHtml}
+                            <div class="order-actions">
+                                <button class="reorder-btn" onclick="reorderItems('${userId}', '${order.id || order.orderId}')">
+                                    <i class="fas fa-redo"></i> Reorder
+                                </button>
+                                <button class="view-details-btn" onclick="toggleOrderDetails('${order.id || order.orderId}')">
+                                    <i class="fas fa-eye"></i> Details
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                historyContainer.innerHTML = html;
+                
+            } catch (error) {
+                console.error("Error loading order history:", error);
+                document.getElementById("history-items").innerHTML = `
+                    <div class="error-message">
+                        <p>Failed to load order history. Please try again later.</p>
+                        <button onclick="window.location.reload()">Retry</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Global functions for button actions
+        window.reorderItems = async function(userId, orderId) {
+            try {
+                // Fetch the order details
+                let order;
+                
+                // First try orders collection
+                const orderRef = doc(db, "orders", orderId);
+                const orderDoc = await getDoc(orderRef);
+                
+                if (orderDoc.exists()) {
+                    order = orderDoc.data();
+                } 
+                // Fallback to user's purchaseHistory
+                else {
+                    const userRef = doc(db, "users", userId);
+                    const userDoc = await getDoc(userRef);
+                    
+                    if (userDoc.exists() && userDoc.data().purchaseHistory) {
+                        order = userDoc.data().purchaseHistory.find(o => o.orderId === orderId);
+                    }
+                    
+                    if (!order) {
+                        throw new Error("Order not found");
+                    }
+                }
+                
+                // Add items to cart
+                let cart = JSON.parse(localStorage.getItem(`cart_${userId}`)) || [];
+                
+                order.items.forEach(item => {
+                    const existingItem = cart.find(cartItem => 
+                        cartItem.productId === item.productId || 
+                        cartItem.id === item.productId);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += item.quantity;
+                    } else {
+                        cart.push({
+                            productId: item.productId || item.id,
+                            id: item.productId || item.id,
+                            name: item.name,
+                            price: item.price,
+                            quantity: item.quantity,
+                            mainImage: item.image || item.mainImage
+                        });
+                    }
+                });
+                
+                localStorage.setItem(`cart_${userId}`, JSON.stringify(cart));
+                
+                // Notify user and redirect to cart
+                alert("Items have been added to your cart");
+                window.location.href = "cart.html";
+                
+            } catch (error) {
+                console.error("Reorder failed:", error);
+                alert("Could not reorder items. Please try again.");
+            }
+        };
+
+        window.toggleOrderDetails = function(orderId) {
+            const detailsElement = document.getElementById(`details-${orderId}`);
+            detailsElement.classList.toggle('show');
+            
+            const button = document.querySelector(`button[onclick="toggleOrderDetails('${orderId}')"]`);
+            if (detailsElement.classList.contains('show')) {
+                button.innerHTML = '<i class="fas fa-eye-slash"></i> Hide Details';
+            } else {
+                button.innerHTML = '<i class="fas fa-eye"></i> Details';
+            }
+        };
+
+        // Check auth state and load history
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                window.location.href = "login.html";
+            } else {
+                displayOrderHistory(user.uid);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Firebase SDK -->
+  <script type="module" src="owner-dashboard.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/compressorjs/1.2.1/compressor.min.js"></script>
+
+
+  <style>
+    /* Add these styles to your existing CSS */
+    .dashboard-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .orders-section,
+    .products-section {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .order-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    .order-items {
+      margin: 10px 0;
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px dashed #eee;
+    }
+
+    .billing-info {
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .status-badge {
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .status-pending {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .status-completed {
+      background: #d4edda;
+      color: #155724;
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+  <header>
+    <h1>Owner Dashboard</h1>
+    <div id="auth-section">
+      <img id="profile-picture" src="" alt="Profile Picture" class="hidden">
+      <button id="logout-button">Logout</button>
+    </div>
+  </header>
+
+
+
+  <div class="dashboard-container">
+   
+
+
+
+
+    <section id="add-product-form">
+      <h2>Add New Product</h2>
+      <form id="product-form">
+        <input type="text" id="product-name" placeholder="Product Name" required>
+        <input type="number" id="product-price" placeholder="Price" required>
+        <input type="file" id="main-image" accept="image/*" required>
+        <input type="file" id="additional-images" placeholder="Additional Images" multiple>
+        <input type="number" id="product-quantity" placeholder="Available Quantity" required>
+        <select id="product-category" required>
+          <option value="">Select Category</option>
+          <option value="BRAND NEW PHONES">BRAND NEW PHONES</option>
+          <option value="UK USED PHONES">UK USED PHONES</option>
+          <option value="BRAND NEW LAPTOPS">BRAND NEW LAPTOPS</option>
+          <option value="UK USED LAPTOPS">UK USED LAPTOPS</option>
+          <option value="AIRPODS">AIRPODS</option>
+          <option value="KIDS TABLET">KIDS TABLET</option>
+          <option value="iPADS">iPADS</option>
+          <option value="SPECIAL OFFER GADGETS">SPECIAL OFFER GADGETS</option>
+          <option value="LAPTOP ACCESSORIES">LAPTOP ACCESSORIES</option>
+          <option value="SPEAKERS">SPEAKERS</option>
+          <option value="GAMES">GAMES</option>
+          <option value="LAPTOP REPAIR ACCESSORIES">LAPTOP REPAIR ACCESSORIES</option>
+          <option value="iWATCH">iWATCH</option>
+          <option value="INTERNET DEVICES">INTERNET DEVICES</option>
+          <option value="PHONE ACCESSORIES">PHONE ACCESSORIES</option>
+          <option value="MONITORS">MONITORS</option>
+          <option value="PRINTERS">PRINTERS</option>
+          <option value="POINT OF SALES (POS)">POINT OF SALES (POS)</option>
+          <option value="TECH ACCESSORIES">TECH ACCESSORIES</option>
+        </select>
+        <textarea id="product-description" placeholder="Description" required></textarea>
+        <button type="submit">Add Product</button>
+      </form>
+    </section>
+
+    <section class="orders-section">
+      <h2>Recent Orders</h2>
+      <div id="orders-list">
+        <!-- Orders will be dynamically inserted here -->
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2023 Online Store. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+
+</html>
