@@ -42,7 +42,7 @@ setPersistence(auth, browserLocalPersistence)
   });
 
 // Owner's email address
-const OWNER_EMAIL = "humbledare5@gmail.com";
+const OWNER_EMAIL = "farouqnasiru@gmail.com";
 
 // DOM elements
 const authForm = document.getElementById("auth-form");

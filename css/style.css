@@ -1055,7 +1055,7 @@ button {
      width: 100%;
      padding: 10px;
      border: 1px solid #ccc;
-     border-radius: 10px;
+     border-radius: 20px;
  }
  
  /* Class to remove margin-top when scrolling */
@@ -1075,7 +1075,7 @@ button {
      background-color: #007bff;
      border: none;
      padding: 10px;
-     border-radius: 5px;
+     border-radius: 25px;
      cursor: pointer;
      color: white;
  }

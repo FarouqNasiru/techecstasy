@@ -359,7 +359,7 @@ button {
 }
 
 .product-icons span {
-    font-size: 15px;
+    font-size: 12px;
     cursor: pointer;
 }
 
@@ -1189,7 +1189,7 @@ h2 {
 .cdcare-category {
     display: flex;
     flex-direction: column;
-    gap: 5px; /* Space between CDcare and category */
+    gap: 1px; /* Space between CDcare and category */
 }
 
 .cdcare-text {

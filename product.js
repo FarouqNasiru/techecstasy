@@ -47,7 +47,7 @@ async function fetchProductDetails() {
     <!-- CDcare, Category, and Icons -->
     <div class="cdcare-icons-container">
         <div class="cdcare-category">
-            <span class="cdcare-text">CDcare</span>
+            <span class="cdcare-text">Tech Ecstasy</span>
             <p class="product-category">${product.category}</p>
            
         </div>
@@ -57,9 +57,10 @@ async function fetchProductDetails() {
             <i class="fas fa-share-alt share-icon" id="share-product"></i>
         </div>
     </div>
+    <br>
 
-    <h1>${product.name}</h1>
-    <p class="price">$${product.price}</p>
+    <h1><bold>${product.name}</bold></h1>
+    <p class="price">₦${product.price}</p>
     <p class="quantity">Available: ${product.quantity}</p>
 
     <div class="quantity-controls">

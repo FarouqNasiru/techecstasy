@@ -71,8 +71,8 @@ function displayCartItems(userId) {
         ${imageSrc ? `<img src="${imageSrc}" alt="${productName}" class="cart-item-image">` : ''}
         <div class="cart-item-details">
           <h3>${productName}</h3>
-          <p>Price: $${productPrice}</p>
-          <p>Total: $${(productPrice * productQuantity).toFixed(2)}</p>
+          <p>Price: ₦${productPrice}</p>
+          <p>Total: ₦${(productPrice * productQuantity).toFixed(2)}</p>
           <button class="remove-button" data-index="${index}">Remove</button>
         </div>
       </div>
@@ -82,7 +82,7 @@ function displayCartItems(userId) {
   cartContainer.innerHTML = `
     ${cartHTML}
     <div class="cart-total">
-      <h3>Total: $${total.toFixed(2)}</h3>
+      <h3>Total: ₦${total.toFixed(2)}</h3>
       <button id="checkout-button">Proceed to Checkout</button>
     </div>
   `;

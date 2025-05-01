@@ -33,7 +33,7 @@ const db = getFirestore(app);
 
 
 // Owner's email address
-const OWNER_EMAIL = "humbledare5@gmail.com"; // Replace with the owner's email
+const OWNER_EMAIL = "farouqnasiru@gmmail.com"; // Replace with the owner's email
 
 // Check if user is authenticated and is the owner
 onAuthStateChanged(auth, (user) => {

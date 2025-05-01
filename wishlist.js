@@ -33,7 +33,7 @@ function fetchWishListItems() {
       <div class="wishlist-item">
         <img src="${item.image}" alt="${item.name}">
         <h3>${item.name}</h3>
-        <p>$${item.price}</p>
+        <p>₦${item.price}</p>
         <button onclick="removeFromWishList('${item.productId}')">Remove</button>
       </div>
     `;

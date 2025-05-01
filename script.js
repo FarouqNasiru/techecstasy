@@ -129,7 +129,7 @@ function displayProducts(products) {
         <img src="${product.mainImage}" alt="${product.name}" data-product-id="${product.id}">
         <h3>${product.name}</h3>
         <div class="price-wishlist">
-          <p>$${product.price}</p>
+          <p>₦${product.price}</p>
           <i class="fas fa-heart wishlist-icon" data-product-id="${product.id}"></i>
         </div>
       </div>
